@@ -33,46 +33,44 @@ class Particle{
   }
 }
 
-   const drawParticles =()=>{
+    const drawParticles =()=>{
     particleArray.forEach((particle) =>{
     particle.draw();
   })
 }
 
-  const updateParticles =()=>{
-  hue++;
-  particleArray.forEach((particle) => {
+    const updateParticles =()=>{
+    hue++;
+    particleArray.forEach((particle) => {
     particle.update();
   })
 }
 
-  const createParticles =(x,y)=>{
+    const createParticles =(x,y)=>{
     for(let i= 0; i<20; i++) {
     const particle = new Particle(x, y);
     particleArray.push(particle);
   }
 }
-const handleDrawing =(event) => {
+   const handleDrawing =(event) => {
+   document.getElementById("pointer").style.display = "none";
    a= event.pageX;
    b= event.pageY;
-  createParticles(a, b);
+   createParticles(a, b);
 }
 
-const animate =()=>{
-  requestAnimationFrame(animate);
-
-  context.fillStyle = "rgba(0, 0, 0, 0.25)";
-  context.fillRect(0, 0, canvas.width, canvas.height);
-
-  drawParticles();
-  updateParticles();
+   const animate =()=>{
+   requestAnimationFrame(animate);
+   context.fillStyle = "rgba(0, 0, 0, 0.25)";
+   context.fillRect(0, 0, canvas.width, canvas.height);
+   drawParticles();
+   updateParticles();
 }
+  animate();
 
-animate();
+  canvas.addEventListener("mousemove",handleDrawing);
 
-canvas.addEventListener("mousemove", handleDrawing);
-
-window.addEventListener("resize", () => {
+  window.addEventListener("resize",()=>{
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 })

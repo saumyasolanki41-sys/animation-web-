@@ -9,8 +9,21 @@ body{
 }
 
 canvas{
+    position: fixed;
     display: block;
     background:#000;
     width: 100vw;
     height: 100vh;
+}
+
+#pointer{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family:"Orbitron", sans-serif;
+  font-size: 50px;
+  font-weight: 100;
+  letter-spacing: 2px;
+  color: #ffd166;
 }
