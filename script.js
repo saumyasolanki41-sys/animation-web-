@@ -15,7 +15,7 @@ class Particle{
         
         this.radius=Math.random()*6+2;
         this.speedX= Math.random();
-        this.speedY= Math.random()*10;
+        this.speedY= Math.random()*20;
 
         this.color=`hsl(${hue}, 100%, 50% )`;
     }
@@ -47,8 +47,32 @@ class Particle{
 }
 
   const createParticles =(x,y)=>{
-    for(let i= 0; i<10; i++) {
+    for(let i= 0; i<20; i++) {
     const particle = new Particle(x, y);
     particleArray.push(particle);
   }
 }
+const handleDrawing =(event) => {
+   a= event.pageX;
+   b= event.pageY;
+  createParticles(a, b);
+}
+
+const animate =()=>{
+  requestAnimationFrame(animate);
+
+  context.fillStyle = "rgba(0, 0, 0, 0.25)";
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
+  drawParticles();
+  updateParticles();
+}
+
+animate();
+
+canvas.addEventListener("mousemove", handleDrawing);
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+})
