@@ -126,8 +126,8 @@ class Particle{
 
    const handleDrawing =(event) => {
    document.getElementById("pointer").style.display = "none";
-   a= event.pageX;
-   b= event.pageY;
+   let a= event.pageX;
+   let b= event.pageY;
    createParticles(a, b);
    drawBrushLine(a, b);   
 
@@ -154,7 +154,6 @@ class Particle{
   drawLoop();
 
  
-// new: lift the pen when the mouse leaves so lines don't jump across the screen
   canvas.addEventListener("mouseleave",()=>{
   lastDrawX= null;
   lastDrawY= null;
